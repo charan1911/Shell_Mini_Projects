@@ -1,0 +1,78 @@
+----------------------------------------
+System Startup - Tue Oct 21 06:42:04 UTC 2025
+Uptime: up 27 minutes
+Network: Connected ✅
+Active services (top 10):
+  UNIT                        LOAD   ACTIVE SUB     DESCRIPTION
+  console-getty.service       loaded active running Console Getty
+  cron.service                loaded active running Regular background program processing daemon
+  dbus.service                loaded active running D-Bus System Message Bus
+  getty@tty1.service          loaded active running Getty on tty1
+  networkd-dispatcher.service loaded active running Dispatcher daemon for systemd-networkd
+  polkit.service              loaded active running Authorization Manager
+  postfix@-.service           loaded active running Postfix Mail Transport Agent (instance -)
+  rsyslog.service             loaded active running System Logging Service
+  systemd-journald.service    loaded active running Journal Service
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+none            3.9G     0  3.9G   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+none            3.9G  4.0K  3.9G   1% /mnt/wsl
+drivers         117G  116G  914M 100% /usr/lib/wsl/drivers
+/dev/sdd       1007G  1.8G  954G   1% /
+none            3.9G   76K  3.9G   1% /mnt/wslg
+none            3.9G     0  3.9G   0% /usr/lib/wsl/lib
+rootfs          3.9G  2.7M  3.9G   1% /init
+none            3.9G  524K  3.9G   1% /run
+none            3.9G     0  3.9G   0% /run/lock
+none            3.9G     0  3.9G   0% /run/shm
+none            3.9G   76K  3.9G   1% /mnt/wslg/versions.txt
+none            3.9G   76K  3.9G   1% /mnt/wslg/doc
+C:\             117G  116G  914M 100% /mnt/c
+D:\             122G   19G  103G  16% /mnt/d
+tmpfs           788M   20K  788M   1% /run/user/1000
+CPU & Memory Usage:
+top - 06:42:04 up 27 min,  1 user,  load average: 0.00, 0.00, 0.00
+Tasks:  35 total,   1 running,  34 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  1.1 sy,  0.0 ni, 97.8 id,  1.1 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   7872.2 total,   7405.9 free,    480.6 used,    137.9 buff/cache     
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   7391.6 avail Mem 
+Startup script completed at Tue Oct 21 06:42:04 UTC 2025
+----------------------------------------
+System Startup - Tue Oct 21 06:43:15 UTC 2025
+Uptime: up 28 minutes
+Network: Connected ✅
+Active services (top 10):
+  UNIT                        LOAD   ACTIVE SUB     DESCRIPTION
+  console-getty.service       loaded active running Console Getty
+  cron.service                loaded active running Regular background program processing daemon
+  dbus.service                loaded active running D-Bus System Message Bus
+  getty@tty1.service          loaded active running Getty on tty1
+  networkd-dispatcher.service loaded active running Dispatcher daemon for systemd-networkd
+  polkit.service              loaded active running Authorization Manager
+  postfix@-.service           loaded active running Postfix Mail Transport Agent (instance -)
+  rsyslog.service             loaded active running System Logging Service
+  systemd-journald.service    loaded active running Journal Service
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+none            3.9G     0  3.9G   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+none            3.9G  4.0K  3.9G   1% /mnt/wsl
+drivers         117G  116G  914M 100% /usr/lib/wsl/drivers
+/dev/sdd       1007G  1.8G  954G   1% /
+none            3.9G   76K  3.9G   1% /mnt/wslg
+none            3.9G     0  3.9G   0% /usr/lib/wsl/lib
+rootfs          3.9G  2.7M  3.9G   1% /init
+none            3.9G  524K  3.9G   1% /run
+none            3.9G     0  3.9G   0% /run/lock
+none            3.9G     0  3.9G   0% /run/shm
+none            3.9G   76K  3.9G   1% /mnt/wslg/versions.txt
+none            3.9G   76K  3.9G   1% /mnt/wslg/doc
+C:\             117G  116G  914M 100% /mnt/c
+D:\             122G   19G  103G  16% /mnt/d
+tmpfs           788M   20K  788M   1% /run/user/1000
+CPU & Memory Usage:
+top - 06:43:15 up 28 min,  1 user,  load average: 0.00, 0.00, 0.00
+Tasks:  35 total,   1 running,  34 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  1.2 sy,  0.0 ni, 98.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   7872.2 total,   7405.1 free,    481.0 used,    138.6 buff/cache     
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   7391.2 avail Mem 
+Startup script completed at Tue Oct 21 06:43:15 UTC 2025

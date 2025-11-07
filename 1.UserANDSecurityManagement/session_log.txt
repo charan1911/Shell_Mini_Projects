@@ -1,0 +1,88 @@
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-08
+LogOutDate:      2025-10-08
+LoginTime:       09:09:26
+LogOutTime:      09:09:26
+IdealTime:       
+Duration:        0h:0m:0s
+----------------------------------------
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-08
+LogOutDate:      2025-10-08
+LoginTime:       10:52:35
+LogOutTime:      10:52:36
+IdealTime:       
+Duration:        0h:0m:1s
+----------------------------------------
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/1
+LoginDate:       2025-10-08
+LogOutDate:      2025-10-10
+LoginTime:       11:08:43
+LogOutTime:      05:18:14
+IdealTime:       
+Duration:        42h:9m:31s
+----------------------------------------
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-08
+LogOutDate:      2025-10-10
+LoginTime:       11:08:43
+LogOutTime:      05:18:14
+IdealTime:       
+Duration:        42h:9m:31s
+----------------------------------------
+UserName:        charan2
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-10
+LogOutDate:      2025-10-10
+LoginTime:       05:18:24
+LogOutTime:      05:18:37
+IdealTime:       
+Duration:        0h:0m:13s
+----------------------------------------
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-10
+LogOutDate:      2025-10-10
+LoginTime:       06:58:37
+LogOutTime:      06:58:37
+IdealTime:       
+Duration:        0h:0m:0s
+----------------------------------------
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-13
+LogOutDate:      2025-10-13
+LoginTime:       06:02:42
+LogOutTime:      06:02:42
+IdealTime:       
+Duration:        0h:0m:0s
+----------------------------------------
+UserName:        bobby
+UserShell:       /bin/bash
+SessionPID:      
+TerminalDetails: /dev/pts/0
+LoginDate:       2025-10-17
+LogOutDate:      2025-10-17
+LoginTime:       09:01:42
+LogOutTime:      09:01:42
+IdealTime:       
+Duration:        0h:0m:0s
+----------------------------------------

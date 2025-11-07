@@ -1,0 +1,96 @@
+----------------------------------------
+Bulk Package Installation Started: Mon Oct 27 08:32:17 UTC 2025
+Installing package: git
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: git
+Installing package: curl
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: curl
+Installing package: wget
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: wget
+Installing package: vim
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: vim
+Installing package: htop
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: htop
+Installing package: python3
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: python3
+Installing package: python3-pip
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: python3-pip
+Installing package: nodejs
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: nodejs
+Installing package: npm
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+❌ Failed to install: npm
+Bulk Package Installation Completed: Mon Oct 27 08:32:22 UTC 2025
+----------------------------------------
+Bulk Package Installation Started: Mon Oct 27 08:33:03 UTC 2025
+Installing package: git
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.43.0-1ubuntu7.3).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: git
+Installing package: curl
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (8.5.0-2ubuntu10.6).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: curl
+Installing package: wget
+Reading package lists...
+Building dependency tree...
+Reading state information...
+wget is already the newest version (1.21.4-1ubuntu4.1).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: wget
+Installing package: vim
+Reading package lists...
+Building dependency tree...
+Reading state information...
+vim is already the newest version (2:9.1.0016-1ubuntu7.9).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: vim
+Installing package: htop
+Reading package lists...
+Building dependency tree...
+Reading state information...
+htop is already the newest version (3.3.0-4build1).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: htop
+Installing package: python3
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3 is already the newest version (3.12.3-0ubuntu2).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: python3
+Installing package: python3-pip
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: python3-pip
+Installing package: nodejs
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nodejs is already the newest version (18.19.1+dfsg-6ubuntu5).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: nodejs
+Installing package: npm
+Reading package lists...
+Building dependency tree...
+Reading state information...
+npm is already the newest version (9.2.0~ds1-2).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+✅ Installed: npm
+Bulk Package Installation Completed: Mon Oct 27 08:33:09 UTC 2025
