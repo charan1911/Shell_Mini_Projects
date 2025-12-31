@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # SMP root directory (parent of this script)
-PROJECT_DIR="/mnt/c/Users/DELL/Desktop/SMP"
+PROJECT_DIR="/mnt/c/Users/DELL/Desktop/Shell_Script_Projects"
 
 echo "Starting auto deployment of SMP..."
 
 cd "$PROJECT_DIR" || exit 1
 
 echo "Pulling latest changes from GitHub..."
-git pull origin main
+git pull --no-rebase origin main
 
 if [ $? -eq 0 ]; then
     echo "Auto deployment successful"
