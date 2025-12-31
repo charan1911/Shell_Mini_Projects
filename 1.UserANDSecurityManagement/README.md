@@ -1,112 +1,132 @@
----
+````md
+# 🛡️ User Login Tracker (Bash Script)
 
-# 📄 User Login Tracker
-
-**Script Name:** `UserLoginTracker.sh`
-**Purpose:** Monitor and log all user login attempts on a Linux system, including failed logins, for security tracking and alerting.
-
----
-
-## 1️⃣ Features
-
-* **Track Logins:** Logs each user login with timestamp, username, and IP (if remote).
-* **Failed Login Alerts:** Detects failed password attempts from `/var/log/auth.log`.
-* **Logout Tracking:** Calculates session duration if implemented with login/logout timestamps.
-* **Centralized Logs:** Stores all login attempts and alerts in a central log file (`login_tracker_logs.txt`).
-* **Customizable:** Paths and alert thresholds can be configured in the script.
+Straight answer first:  
+This script tracks **user login and logout sessions**, calculates **how long the user stayed logged in**, and logs everything.  
+It logs facts. It does not act like a security guard.
 
 ---
 
-## 2️⃣ Requirements
+## 📌 What This Script Does
 
-* Linux system (Ubuntu/Debian/RHEL/CentOS)
+- Detects **LOGIN** and **LOGOUT**
+- Calculates **session duration** (hours, minutes, seconds)
+- Logs session details into a file
+- Uses a temporary file to remember login state
+
+Temp file missing → LOGIN  
+Temp file exists → LOGOUT  
+
+No guessing. No background magic.
+
+---
+
+## 📂 Directory Structure
+
+```text
+UserSecurityManagement/
+├── session_log.txt          # Permanent session history
+└── .<username>_login_info   # Temporary login timestamp
+````
+
+---
+
+## ⚙️ How It Works
+
+1. **First run**
+
+   * Temp file does not exist
+   * Script assumes **LOGIN**
+   * Stores epoch timestamp
+
+2. **Second run**
+
+   * Temp file exists
+   * Script assumes **LOGOUT**
+   * Calculates session duration
+   * Writes full session info to `session_log.txt`
+   * Deletes temp file
+
+State-based tracking. Simple and predictable.
+
+---
+
+## 🧠 Information Logged Per Session
+
+* UserName
+* UserShell
+* SessionPID
+* Terminal (TTY)
+* LoginDate
+* LoginTime
+* LogOutDate
+* LogOutTime
+* IdleTime
+* Total Duration
+
+Each session is clearly separated in the log file.
+
+---
+
+## 📦 Requirements
+
 * Bash shell
-* `awk`, `grep`, `bc` (common Linux utilities)
-* Permissions to read `/var/log/auth.log` and write to chosen log folder
+* Standard Linux commands:
+
+  * `who`
+  * `tty`
+  * `awk`
+  * `grep`
+* Linux or WSL environment
 
 ---
 
-## 3️⃣ Installation / Setup
+## ⚠️ Failed Login Alert (Important)
 
-1. **Place the script** in your desired folder, e.g.:
+### WSL ❌
 
-```bash
-/mnt/c/Users/DELL/Desktop/SMP/UserSecurityManagement/
-```
+* Failed login alert **does NOT work reliably**
+* WSL does not fully support:
 
-2. **Ensure the log directory exists:**
+  * PAM
+  * Authentication logs (`/var/log/auth.log`)
+* Failed login attempts may be missing or inaccurate
 
-```bash
-mkdir -p /mnt/c/Users/DELL/Desktop/SMP/UserSecurityManagement/Logs
-touch /mnt/c/Users/DELL/Desktop/SMP/UserSecurityManagement/Logs/login_tracker_logs.txt
-```
+### Real Linux ✅
 
-3. **Make the script executable:**
+* Failed login detection works correctly
+* Authentication logs are available
 
-```bash
-chmod +x UserLoginTracker.sh
-```
-
-4. **Test run:**
-
-```bash
-bash UserLoginTracker.sh
-```
+This is a **platform limitation**, not a script issue.
 
 ---
 
-## 4️⃣ Script Configuration
+## 🚫 What This Script Is NOT
 
-* **Log file path:**
+* Not a firewall
+* Not an intrusion detection system
+* Not real-time monitoring
+* Not production-ready security
 
-```bash
-LOG_FILE="/mnt/c/Users/DELL/Desktop/SMP/UserSecurityManagement/Logs/login_tracker_logs.txt"
-```
-
-* **Failed login detection:**
-  The script reads `/var/log/auth.log` (Ubuntu/Debian) or `/var/log/secure` (RHEL/CentOS).
-  You can adjust for multiple users or custom thresholds.
+It logs sessions. Nothing more.
 
 ---
 
-## 5️⃣ Logging
+## 🧪 Tested On
 
-* Each login or failed login is logged in the format:
-
-```
-2025-10-08 15:30:12 - User: charan1911 - Login Successful
-2025-10-08 15:32:05 - User: admin - Failed Password from IP: 192.168.1.45
-```
-
-* Logs include **timestamp**, **username**, **IP (if remote)**, and **status**.
+* Linux ✅
+* WSL ⚠️ (partial feature support)
 
 ---
 
-## 6️⃣ Automate with Cron
+## 🏁 Final Words
 
-To run the tracker automatically at intervals:
+Clean script.
+Clear limits.
+No over-promising.
 
-1. Open crontab:
+Use it, study it, extend it if you need more.
 
-```bash
-crontab -e
+```
 ```
 
-2. Add a line to check logins every 5 minutes:
-
-```bash
-*/5 * * * * /bin/bash /mnt/c/Users/DELL/Desktop/SMP/UserSecurityManagement/UserLoginTracker.sh
-```
-
-3. Save and exit. Cron will now automatically execute the script and append logs.
-
----
-
-## 7️⃣ Notes
-
-* Ensure your script has **read permission** on `/var/log/auth.log` or `/var/log/secure`.
-* Test the script manually before setting up cron.
-* Customize log folder paths according to your project setup.
-* Can be extended to **multi-user monitoring** or **dashboard visualization**.
-
----
