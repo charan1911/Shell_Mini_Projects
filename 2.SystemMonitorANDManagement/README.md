@@ -1,139 +1,178 @@
----
+````md
+# ⚙️ System Monitor & Process Auto-Restart (Project 2)
 
-# 📄 System Resource Management Script
-
-**Script Name:** `SystemResourceManagement.sh`
-**Purpose:** Monitor CPU, Memory, and Disk usage on Linux and log warnings if thresholds are exceeded.
-
----
-
-## 1️⃣ Features
-
-* **CPU Monitoring:** Checks current CPU usage and logs if usage exceeds defined threshold.
-* **Memory Monitoring:** Calculates memory usage percentage and logs if usage exceeds threshold.
-* **Disk Monitoring:** Monitors root (`/`) disk usage and logs if usage exceeds threshold.
-* **Logging:** All events are logged in a central log file (`srm_logs.txt`) with timestamps.
-* **Customizable Thresholds:** Set CPU, Memory, and Disk limits easily via variables.
+Blunt version up front:  
+This project **keeps scripts alive** and **keeps an eye on system resources**.  
+If something dies, it gets restarted.  
+If resources cross limits, it gets logged.  
+No GUI. No excuses.
 
 ---
 
-## 2️⃣ Requirements
+## 📌 What This Project Does
 
-* Linux system (Ubuntu, Debian, RHEL, CentOS, etc.)
-* Bash shell
-* `bc` installed (used for decimal comparisons)
-* Permissions to write logs to the chosen folder
+This project has **two responsibilities**:
 
-**Install `bc` if missing:**
+1. **Process Auto-Restart**
+2. **System Resource Monitoring**
 
-```bash
-sudo apt install bc       # Debian/Ubuntu
-sudo yum install bc       # RHEL/CentOS
+They can run together or separately, depending on how paranoid you are.
+
+---
+
+## 🔁 1. Process Auto-Restart
+
+### Purpose  
+Ensures critical scripts (`task1.sh`, `task2.sh`) are **always running**.
+
+If a script stops:
+- It is restarted automatically
+- It runs **fully detached**
+- Closing the terminal will NOT kill it
+
+This is basic reliability. Nothing fancy.
+
+---
+
+### 🧠 How Auto-Restart Works
+
+- Uses `pgrep -f` to check if the process is running
+- If **not running**:
+  - Starts it using `setsid + nohup`
+  - Redirects output to log files
+- If **running**:
+  - Does nothing
+  - Prints status
+
+Detached means detached.  
+Terminal death ≠ process death.
+
+---
+
+### 📂 Auto-Restart Directory Structure
+
+```text
+ProcessAutoRestart/
+├── task1/
+│   ├── task1.sh
+│   └── task1.log
+├── task2/
+│   ├── task2.sh
+│   └── task2.log
+└── auto_restart.sh
+````
+
+Each task has its own folder and log.
+No mixed mess.
+
+---
+
+## 📊 2. System Resource Monitor
+
+### Purpose
+
+Monitors **CPU**, **Memory**, and **Disk** usage and logs violations.
+
+This is **threshold-based**, not AI, not predictive.
+
+---
+
+### 🧠 What Gets Monitored
+
+| Resource | Threshold | Action |
+| -------- | --------- | ------ |
+| CPU      | > 1.25%   | Logged |
+| Memory   | > 6.4%    | Logged |
+| Disk     | > 0.25%   | Logged |
+
+Yes, the thresholds are intentionally low.
+This is for testing and learning, not production tuning.
+
+---
+
+### 📝 Logging Behavior
+
+* Logs are appended to:
+
+  ```text
+  SRM_Logs.txt
+  ```
+* Each log entry includes:
+
+  * Timestamp
+  * Resource type
+  * Current usage
+  * How much it exceeded the limit
+
+No alerts.
+No notifications.
+Just evidence.
+
+---
+
+## 📂 Resource Monitor Files
+
+```text
+SystemMonitorANDManagement/
+├── SystemResourceManagement.sh
+└── SRM_Logs.txt
 ```
 
 ---
 
-## 3️⃣ Installation / Setup
+## 📦 Requirements
 
-1. Place the script in your desired folder, e.g.:
+* Bash
+* Linux utilities:
 
-```bash
-/mnt/c/Users/DELL/Desktop/SMP/SystemMonitorANDManagement/
-```
-
-2. Ensure the log directory exists:
-
-```bash
-mkdir -p /mnt/c/Users/DELL/Desktop/Shell_Scripting_Basic_Projects
-touch /mnt/c/Users/DELL/Desktop/Shell_Scripting_Basic_Projects/srm_logs.txt
-```
-
-3. Make the script executable:
-
-```bash
-chmod +x SystemResourceManagement.sh
-```
-
-4. Test run:
-
-```bash
-bash SystemResourceManagement.sh
-```
+  * `pgrep`
+  * `top`
+  * `free`
+  * `df`
+  * `awk`
+  * `bc`
+* Linux or WSL
 
 ---
 
-## 4️⃣ Script Configuration
+## ⚠️ WSL Notes (Reality Check)
 
-Open the script and adjust thresholds:
+* Resource values on WSL are **not always accurate**
+* CPU and memory stats depend on Windows host behavior
+* Logs are still generated correctly
 
-```bash
-CPU_THRESHOLD=75     # % CPU usage limit
-MEM_THRESHOLD=80     # % Memory usage limit
-DISK_THRESHOLD=90    # % Disk usage limit
-LOG_FILE="/mnt/c/Users/DELL/Desktop/Shell_Scripting_Basic_Projects/srm_logs.txt"
-```
+Works, but don’t treat numbers as gospel.
 
 ---
 
-## 5️⃣ Logging
+## 🚫 What This Project Is NOT
 
-* Logs are stored in `$LOG_FILE`.
-* Example log entry:
+* Not systemd
+* Not a supervisor daemon
+* Not Prometheus
+* Not production monitoring
 
-```
-2025-10-08 15:00:12 - CPU Crossed: 85.32% (Over by 10.32%)
-2025-10-08 15:00:12 - Memory Crossed: 82.45% (Over by 2.45%)
-```
-
-* Each entry includes **timestamp**, **resource**, **current usage**, and **amount over threshold**.
+It’s a **learning-focused monitoring setup**.
 
 ---
 
-## 6️⃣ Automate with Cron
+## 🧪 Tested Environment
 
-To run the script automatically at regular intervals:
-
-1. Open crontab for the current user:
-
-```bash
-crontab -e
-```
-
-2. Add a line to run the script every 5 minutes:
-
-```bash
-*/5 * * * * /bin/bash /mnt/c/Users/DELL/Desktop/SMP/SystemMonitorANDManagement/SystemResourceManagement.sh
-```
-
-**Explanation of cron syntax:**
-
-```
-┌───────────── minute (0-59)
-│ ┌───────────── hour (0-23)
-│ │ ┌───────────── day of month (1-31)
-│ │ │ ┌───────────── month (1-12)
-│ │ │ │ ┌───────────── day of week (0-7) (Sunday=0 or 7)
-│ │ │ │ │
-*/5 * * * *   -> run every 5 minutes
-```
-
-3. Save and exit. Cron will now automatically execute the script and append logs.
+* Linux ✅
+* WSL ⚠️ (stats depend on host system)
 
 ---
 
-## 7️⃣ Optional Enhancements
+## 🏁 Final Verdict
 
-* **Alerts:** Send email or Slack notifications when thresholds are exceeded.
-* **Separate Logs:** Maintain separate logs for CPU, Memory, Disk.
-* **CSV Output:** For easier plotting in Excel or Google Sheets.
-* **Real-time Monitoring:** Run continuously with `watch` or a daemon script.
+* Auto-restart: solid
+* Resource monitoring: basic but honest
+* Logging: clean
+* Overengineering: zero
 
----
+If you want real monitoring, integrate proper tools.
+If you want to understand **how things work under the hood**, this is perfect.
 
-## 8️⃣ Notes
+```
+```
 
-* Ensure you have write permissions to the log file path.
-* Thresholds are percentages; adjust based on your system’s capacity.
-* The script is lightweight and suitable for personal or small server monitoring.
-
----
